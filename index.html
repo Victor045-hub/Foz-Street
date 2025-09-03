@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foz Street</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Fundo mais escuro para o estilo streetwear */
+            color: #e2e8f0;
+        }
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .modal {
+            display: none;
+        }
+        .modal.open {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Cabeçalho -->
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bebas tracking-wide text-white hover:text-gray-400 transition-colors duration-300">
+                FOZ STREET
+            </a>
+            <div class="flex space-x-6 items-center text-gray-400 font-semibold">
+                <a href="#novidades" class="hover:text-white transition-colors duration-300">Coleção</a>
+                <a href="#lancamentos" class="hover:text-white transition-colors duration-300">Lançamentos</a>
+                <a href="#about-us" class="hover:text-white transition-colors duration-300">Sobre</a>
+                <button id="cart-button" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                    Carrinho (<span id="cart-count">0</span>)
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção de Destaque (Hero) -->
+    <section class="bg-gray-800 py-24 px-6 text-center">
+        <h1 class="text-6xl font-bebas tracking-wide text-white mb-4">A RUA É A NOSSA PASSARELA.</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            Estilo autêntico e atitude única. Descubra a nossa coleção exclusiva de roupas, feitas para quem vive a cultura urbana.
+        </p>
+        <a href="#novidades" class="bg-blue-600 text-white font-semibold px-10 py-4 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300 shadow-xl">
+            Compre Agora
+        </a>
+    </section>
+
+    <!-- Seção de Produtos - Novidades -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+        <h2 id="novidades" class="text-4xl font-bebas tracking-wide text-center text-white mb-10">Novidades</h2>
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Produtos Novidades serão injetados aqui via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Seção de Produtos - Lançamentos -->
+    <section class="container mx-auto px-6 py-12">
+        <h2 id="lancamentos" class="text-4xl font-bebas tracking-wide text-center text-white mb-10">Lançamentos</h2>
+        <div id="releases-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Produtos Lançamentos serão injetados aqui via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section id="about-us" class="bg-gray-800 py-20 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bebas tracking-wide text-white mb-6">SOBRE NÓS</h2>
+            <p class="text-lg text-gray-300 max-w-4xl mx-auto">
+                Na Foz Street, a paixão pela cultura de rua se traduz em cada peça de roupa. Nossa missão é oferecer estilo autêntico e atitude única para quem vive a cidade. Acreditamos que a moda é uma forma de arte e expressão pessoal, e por isso, cada item da nossa coleção é cuidadosamente selecionado para refletir a energia e a criatividade do cenário urbano. Junte-se ao nosso movimento e vista-se com a sua verdade.
+            </p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-gray-400 py-8 px-6 mt-auto">
+        <div class="container mx-auto text-center">
+            <h3 class="text-2xl font-bebas tracking-wide text-white mb-2">FOZ STREET</h3>
+            <p>Seu estilo, suas regras.</p>
+            <p class="mt-4">© 2025 Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-lg p-8 max-w-lg w-full shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bebas tracking-wide text-white">Seu Carrinho</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-white transition-colors duration-300 text-2xl">&times;</button>
+            </div>
+            <div id="cart-items" class="mb-4 space-y-4">
+                <!-- Itens do carrinho serão adicionados aqui -->
+            </div>
+            <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                <span class="text-lg font-bold">Total:</span>
+                <span id="cart-total" class="text-2xl font-bold text-white">R$ 0,00</span>
+            </div>
+            <button class="w-full mt-6 bg-blue-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                Finalizar Compra
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript para funcionalidade do carrinho e renderização dinâmica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = [
+                { id: 1, name: 'Corta-Vento Nike Classic', price: 399.90, image: 'corta-vento,jpg.jpg' },
+                { id: 2, name: 'Calça Jogger Cargo', price: 189.90, image: 'calça,jpg.jpg' },
+                { id: 3, name: 'Camiseta Oversized Black', price: 99.90, image: 'oversized.jpg' }
+            ];
+
+            const releases = [
+                { id: 4, name: 'Jaqueta Camuflada', price: 450.00, image: 'image_ad0e9e.jpg' },
+                { id: 5, name: 'Blusão Moletom Flow', price: 250.00, image: 'image_ad0ebe.jpg' },
+                { id: 6, name: 'Tênis Urbano High', price: 599.90, image: 'image_ad0ed9.jpg' }
+            ];
+
+            let cart = [];
+
+            const productList = document.getElementById('product-list');
+            const releasesList = document.getElementById('releases-list');
+            const cartCountSpan = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const closeModalButton = document.getElementById('close-modal');
+
+            function renderProducts(list, items) {
+                list.innerHTML = '';
+                items.forEach(product => {
+                    const productElement = `
+                        <div class="bg-gray-700 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-white mb-2">${product.name}</h3>
+                                <p class="text-gray-400 mb-4">Um ícone do streetwear para o seu guarda-roupa.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-bold text-white">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 add-to-cart" data-id="${product.id}">
+                                        Adicionar ao Carrinho
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    list.innerHTML += productElement;
+                });
+            }
+
+            function updateCartCount() {
+                cartCountSpan.textContent = cart.length;
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `<p class="text-gray-400 text-center">O seu carrinho está vazio.</p>`;
+                } else {
+                    cart.forEach(item => {
+                        const cartItemElement = `
+                            <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg">
+                                <div class="flex items-center space-x-4">
+                                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+                                    <div>
+                                        <h4 class="text-white font-semibold">${item.name}</h4>
+                                        <p class="text-gray-400">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        cartItemsContainer.innerHTML += cartItemElement;
+                        total += item.price;
+                    });
+                }
+                cartTotalSpan.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+
+            // Event Listeners
+            document.body.addEventListener('click', (event) => {
+                if (event.target.classList.contains('add-to-cart')) {
+                    const productId = parseInt(event.target.dataset.id);
+                    const allProducts = [...products, ...releases];
+                    const productToAdd = allProducts.find(p => p.id === productId);
+                    if (productToAdd) {
+                        cart.push(productToAdd);
+                        updateCartCount();
+                        console.log('Produto adicionado:', productToAdd);
+                    }
+                }
+            });
+
+            cartButton.addEventListener('click', () => {
+                renderCart();
+                cartModal.classList.add('open');
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                cartModal.classList.remove('open');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === cartModal) {
+                    cartModal.classList.remove('open');
+                }
+            });
+
+            // Inicializa a página renderizando os produtos
+            renderProducts(productList, products);
+            renderProducts(releasesList, releases);
+        });
+    </script>
+</body>
+</html>
